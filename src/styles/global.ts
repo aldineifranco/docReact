@@ -1,39 +1,38 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-* {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     }
 
     body {
-        background-color: ${({ theme }) =>
-          theme.color.background_800};
-        color: ${({ theme }) =>
-          theme.color.orange};
+    background-color: ${({ theme }) =>
+      theme.colors.background_100};
+    color: ${({ theme }) =>
+      theme.colors.background_900};
 
-        -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
     }
 
     body, input, button, textarea {
-        font-family: 'Roboto Slab', serif;
-        font-size: 16px;
-        outline: none;
+      font-family: "Roboto", sans-serif;
+      font-weight: 700;
+      font-style: normal;
+      outline: none;
     }
 
     a {
-        text-decoration: none;
+      text-decoration: none;
     }
 
     button, a {
-        cursor: pointer;
-        transition: filter 0.2s
+      cursor: pointer;
+      transition: filter 0.2s
     }
 
     button:hover, a:hover {
-        filter: brightness(0.9);
+      filter: brightness(0.9);
     }
-    
-
 `;
