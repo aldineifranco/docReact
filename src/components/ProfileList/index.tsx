@@ -1,8 +1,11 @@
+import { useEffect, useState } from "react";
 import { ProfileProps } from "../../interface/ProfileProps";
 import { Profile } from "../Profile";
-import { Content } from "./style";
+import { Heading, Content, InputFilter } from "./style";
 
 export function ProfileList() {
+  const [countVideo, setCountVideo] = useState<string>(' ');
+
   const userProfile: ProfileProps[] = [
     {
       id: 1,
@@ -21,20 +24,37 @@ export function ProfileList() {
       name: 'Nathan Franco',
       url: 'https://avatars.githubusercontent.com/u/93042673?v=4',
       imageSize: 90
-    }
-  ]
+    },
+    {
+      id: 4,
+      name: 'José Souza',
+      url: 'https://avatars.githubusercontent.com/u/93042673?v=4',
+      imageSize: 90
+    },
+  ];
 
-  // const count = userProfile.length;
+  useEffect(() => {
+    textCountVideo();
+  }, [userProfile]);
   
-  // if (count > 0) {
-  //   const numero = count > 1 ? 'Vídeos' : 'Vídeo';
-  //   const contador = count + ' ' + numero
-  // }
-   
-  
+
+  function textCountVideo() {
+    const count = userProfile.length;
+    if (count > 0) {
+      const textHeading = count > 1 ? 'Vídeos' : 'Vídeo'
+      const text = count + ' ' + textHeading
+      setCountVideo(text)
+    }
+  }
+
+
 
   return (
-   
+    <>
+      <Heading>{countVideo}</Heading>
+
+      <InputFilter></InputFilter>
+
       <Content>
         {userProfile.map(user => (
           <Profile
@@ -44,8 +64,8 @@ export function ProfileList() {
             imageSize={user.imageSize}
           />
         ))}
-        
+
       </Content>
- 
+    </>
   )
 }
