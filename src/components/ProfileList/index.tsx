@@ -49,8 +49,7 @@ export function ProfileList() {
       }
     }
     textCountVideo()
-  }, [userProfile]);
-
+  }, [filteredUsers]);
 
 
   function handleText(event: React.ChangeEvent<HTMLInputElement>) {
@@ -60,34 +59,34 @@ export function ProfileList() {
     setFilteredUsers(filtered)
   }
 
+    return (
+      <Container>
 
-  return (
-    <Container>
 
-
-      <InputFilter>
-        <input
-          value={handleTextChange}
-          type="text"
-          onChange={handleText}
-          placeholder="Digite um termo para busca"
-        />
-        <button type="submit">
-          <Search />
-        </button>
-      </InputFilter>
-
-      <Heading>{countVideo} encontrados</Heading>
-      <Content>
-        {filteredUsers.map(user => (
-          <Profile
-            id={user.id}
-            title={user.title}
-            url={user.url}
+        <InputFilter>
+          <input
+            value={handleTextChange}
+            type="text"
+            onChange={handleText}
+            placeholder="Digite um termo para busca"
           />
-        ))}
+          <button type="submit">
+            <Search />
+          </button>
+        </InputFilter>
 
-      </Content>
-    </Container>
-  )
-}
+        <Heading>{countVideo} encontrados</Heading>
+        <Content>
+          {filteredUsers.map(user => (
+            <Profile
+              id={user.id}
+              title={user.title}
+              url={user.url}
+            />
+          ))}
+
+        </Content>
+      </Container>
+    )
+  }
+
