@@ -1,6 +1,6 @@
 export interface ProfileProps {
   id: number;
-  name: string;
+  title: string;
   url: string;
-  imageSize: number
+  link?: () => void;
 }

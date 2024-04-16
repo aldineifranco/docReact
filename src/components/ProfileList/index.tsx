@@ -1,71 +1,93 @@
 import { useEffect, useState } from "react";
 import { ProfileProps } from "../../interface/ProfileProps";
 import { Profile } from "../Profile";
-import { Heading, Content, InputFilter } from "./style";
+import { Heading, Content, InputFilter, Container } from "./style";
+import { Search } from 'lucide-react';
+import ImageCard from '../../assets/card_image.jpg';
+
+const userProfile: ProfileProps[] = [
+  {
+    id: 1,
+    title: 'Aldinei Souza Franco',
+    url: ImageCard,
+  },
+  {
+    id: 2,
+    title: 'Davi Franco',
+    url: ImageCard,
+  },
+  {
+    id: 3,
+    title: 'Nathan Franco',
+    url: ImageCard,
+  },
+  {
+    id: 4,
+    title: 'José Souza',
+    url: ImageCard,
+  },
+  {
+    id: 5,
+    title: 'José Souza',
+    url: ImageCard,
+  },
+];
 
 export function ProfileList() {
   const [countVideo, setCountVideo] = useState<string>(' ');
+  const [handleTextChange, setHandleTextChange] = useState('')
+  const [filteredUsers, setFilteredUsers] = useState<ProfileProps[]>(userProfile)
 
-  const userProfile: ProfileProps[] = [
-    {
-      id: 1,
-      name: 'Aldinei Souza Franco',
-      url: 'https://avatars.githubusercontent.com/u/93042673?v=4',
-      imageSize: 90
-    },
-    {
-      id: 2,
-      name: 'Davi Franco',
-      url: 'https://avatars.githubusercontent.com/u/93042673?v=4',
-      imageSize: 90
-    },
-    {
-      id: 3,
-      name: 'Nathan Franco',
-      url: 'https://avatars.githubusercontent.com/u/93042673?v=4',
-      imageSize: 90
-    },
-    {
-      id: 4,
-      name: 'José Souza',
-      url: 'https://avatars.githubusercontent.com/u/93042673?v=4',
-      imageSize: 90
-    },
-  ];
 
   useEffect(() => {
-    textCountVideo();
-  }, [userProfile]);
-  
-
-  function textCountVideo() {
-    const count = userProfile.length;
-    if (count > 0) {
-      const textHeading = count > 1 ? 'Vídeos' : 'Vídeo'
-      const text = count + ' ' + textHeading
-      setCountVideo(text)
+    function textCountVideo() {
+      const count = filteredUsers.length;
+      if (count > 0) {
+        const textHeading = count > 1 ? 'vídeos' : 'vídeo'
+        const text = count + ' ' + textHeading
+        setCountVideo(text)
+      }
     }
+    textCountVideo()
+  }, [userProfile]);
+
+
+
+  function handleText(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = event.target.value
+    setHandleTextChange(value)
+    const filtered = userProfile.filter(user => user.title.toLowerCase().includes(value.toLowerCase()));
+    setFilteredUsers(filtered)
   }
 
 
-
   return (
-    <>
-      <Heading>{countVideo}</Heading>
+    <Container>
 
-      <InputFilter></InputFilter>
 
+      <InputFilter>
+        <input
+          value={handleTextChange}
+          type="text"
+          onChange={handleText}
+          placeholder="Digite um termo para busca"
+        />
+        <button type="submit">
+          <Search />
+        </button>
+      </InputFilter>
+
+      <Heading>{countVideo} encontrados</Heading>
       <Content>
-        {userProfile.map(user => (
+        {filteredUsers.map(user => (
           <Profile
             id={user.id}
-            name={user.name}
+            title={user.title}
             url={user.url}
-            imageSize={user.imageSize}
           />
         ))}
 
       </Content>
-    </>
+    </Container>
   )
 }

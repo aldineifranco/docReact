@@ -10,8 +10,13 @@ export default {
     white: "#fff",
     orange: "#ff9000",
 
+    cyan_700: "#0e7490",
+    cyan_400: "#22d3ee",
+
     gray_100: "#999591",
     gray_300: "#666360",
+
+    text: "##09090b",
 
     red: "#FF002E",
   },

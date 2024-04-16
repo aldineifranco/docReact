@@ -1,19 +1,17 @@
-import { Container, Img, Title } from "./style";
+import { Button, Container, Img, Title } from "./style";
 import { ProfileProps } from "../../interface/ProfileProps";
 
 
-export function Profile({ name, url, imageSize }: ProfileProps) {
+export function Profile({ title, url, link }: ProfileProps) {
   return (
     <Container>
       <Img 
         src={url} 
-        alt={'foto' + name}
-        style={{
-          width: imageSize,
-          height: imageSize
-        }}
+        alt={'foto' + title}
       />
-      <Title>{name}</Title>
+      <Title>{title}</Title>
+      <Button onClick={link}>Assistir</Button>
     </Container>
   )
 }
+
