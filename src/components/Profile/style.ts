@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 
 export const Container = styled.div`
+  width: 20rem;
   display: flex;
   gap: 16px;
   align-items: center;
@@ -10,7 +11,7 @@ export const Container = styled.div`
   -webkit-box-shadow: 3px 10px 20px -7px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 3px 10px 20px -7px rgba(0, 0, 0, 0.2);
   background-color: ${({ theme }) =>
-    theme.colors.white};
+  theme.colors.white};
 `;
 
 export const Title = styled.h1`

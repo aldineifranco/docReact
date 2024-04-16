@@ -1,18 +1,12 @@
 import { Container, Img, Title } from "./style";
+import { ProfileProps } from "../../interface/ProfileProps";
 
 
-interface ProfileProps {
-  name: string;
-  imageUrl: string;
-  imageSize: number
-}
-
-
-export function Profile({ name, imageUrl, imageSize }: ProfileProps) {
+export function Profile({ name, url, imageSize }: ProfileProps) {
   return (
     <Container>
       <Img 
-        src={imageUrl} 
+        src={url} 
         alt={'foto' + name}
         style={{
           width: imageSize,
