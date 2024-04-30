@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ProfileProps } from "../../interface/ProfileProps";
-import { Profile } from "../Profile";
+import { Profile } from "../../components/Profile";
 import { Heading, Content, InputFilter, Container } from "./style";
 import { Search } from 'lucide-react';
 import ImageCard from '../../assets/card_image.jpg';
