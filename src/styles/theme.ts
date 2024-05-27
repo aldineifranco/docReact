@@ -19,5 +19,8 @@ export default {
     text: "##09090b",
 
     red: "#FF002E",
+
+    primary: "#4880FF",
+    secondary: "#FF8743"
   },
 };

@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.5",
     "@remotion/player": "^4.0.141",
     "lucide-react": "^0.368.0",
     "react": "^18.2.0",
